@@ -38,11 +38,21 @@ def main():
         #If the last status is older than the threshold on the .ini file,
         #the friend's name is added to the inactive friends list.
         if (delta.days > int(config['General']['DaysInactive'])):
-            inactive_friends.append(friend.screen_name)
+            inactive_friends.append(friend)
 
     #output the result
-    print('The following friends are inactive for more than 5 days:')
-    print(inactive_friends)
+    if (len(inactive_friends) > 0):
+        print('The following % s friends are inactive for more than 5 days:' % len(inactive_friends))
+        for friend in inactive_friends:
+            print(friend.screen_name)
+
+        print('Unfollowing %s inactive users..' % len(inactive_friends))
+        answer = input("Are you sure? [Y/n]").lower()
+        if answer and answer[0] == "y":
+            for friend in inactive_friends:
+                print("Unfollowing " + friend.screen_name)
+                friend.unfollow()
+
 
 if __name__ == "__main__":
     main()
