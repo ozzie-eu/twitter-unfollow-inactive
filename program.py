@@ -6,7 +6,7 @@ def main():
     #Read security tokens from external .ini file
     config = configparser.ConfigParser()
     config.read('..\..\TwitterAPI\config.ini')
-    print('Read configuratioon file.')
+    print('Read configuration file.')
     print(config.sections())
 
     #Pass tokens for authorization
