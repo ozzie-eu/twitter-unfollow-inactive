@@ -50,6 +50,8 @@ def main():
             print(friend.screen_name)
 
         print('Unfollowing %s inactive users..' % len(inactive_friends))
+
+        #To unfollow wothout prompt, comment the following 2 lines
         answer = input("Are you sure? [Y/n]").lower()
         if answer and answer[0] == "y":
             for friend in inactive_friends:
