@@ -25,7 +25,7 @@ def main():
     #List to put the inactive friends in
     inactive_friends = [];
 
-    for friend in tweepy.Cursor(api.get_friends, screen_name=user.screen_name).items(int(config['General']['BatchSize'])):
+    for friend in tweepy.Cursor(api.get_friends, screen_name=user.screen_name).items(): 
         print('friend: ' + friend.screen_name)
         tweets_list= api.user_timeline(screen_name = friend.screen_name, count = 1)
         tweet= tweets_list[0] # last status of this friend (tweepy.models.Status)
@@ -39,6 +39,9 @@ def main():
         #the friend's name is added to the inactive friends list.
         if (delta.days > int(config['General']['DaysInactive'])):
             inactive_friends.append(friend)
+        
+        if (len(inactive_friends) >= int(config['General']['BatchSize'])):
+            break
 
     #output the result
     if (len(inactive_friends) > 0):

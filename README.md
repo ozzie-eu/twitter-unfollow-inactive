@@ -18,6 +18,6 @@ It should point to wherever you save your .INI file with the authorization token
 * **Bearer.Token**: OAuth 2.0 Bearer Token authenticates requests on behalf of your developer App.
 * **Access.Token and Access.Secret**: user-specific credentials used to authenticate OAuth 1.0a API requests.
 * **General.ScreenName**: your twitter account screen name.
-* **General.BatchSize**: the number of friend acconts you wish to scan on each run.
+* **General.BatchSize**: the maximum number of friend acconts you wish to be able to remove on each run.
 * **General.DaysInactive**: the time threshold to consider a friend as inactive, in days.
 
